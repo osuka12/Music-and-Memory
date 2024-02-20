@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Memory Challenge</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="header">
+            <div id ="begin">
+                <label>Subject</label> <input id="subject"></input>
+
+            <label>Genre</label>
+            <select name="genre" id="genre">
+                <option value="control">Control</option>
+                <option value="classical">Classical</option>
+                <option value="country">Country</option>
+                <option value="rock">Rock</option>
+                <option value="pop">Pop</option>
+                <option value="hiphop">Hip Hop</option>
+            </select>
+            <button id="start-test" class="button-18">Start Test</button>
+            <a id="downloadAnchorElem" style="display:none"></a>
+            <button id="btnDownloadDb" onclick="downloadDatabase()" class="button-18">Download Database</button>
+            </div>
+        </div>
+        </div>
+        <div id="body-content">
+        <!-- Grid game -->
+        <div class="game-viewport" id="grid-memory">
+            <div class="game-title">
+                <h1>Spatial Memory</h1>
+                <div class="start-container">
+                    <button id="start-button" class="button-18">Start</button>
+                </div>
+            </div>
+            <div id="game-body" class="hidden">
+
+                <div id="grid-container">
+                    <div class="grid-row">
+                        <div class="grid-cell"><button class="button" data-num="0"></button> </div>
+                        <div class="grid-cell"><button class="button" data-num="1"></button> </div>
+                        <div class="grid-cell"><button class="button" data-num="2"></button> </div>
+                        <div class="grid-cell"><button class="button" data-num="3"></button> </div>
+                    </div>
+                    <div class="grid-row">
+                        <div class="grid-cell"><button class="button" data-num="4"></button> </div>
+                        <div class="grid-cell"><button class="button" data-num="5"></button> </div>
+                        <div class="grid-cell"><button class="button" data-num="6"></button> </div>
+                        <div class="grid-cell"><button class="button" data-num="7"></button> </div>
+                    </div>
+                    <div class="grid-row">
+                        <div class="grid-cell"><button class="button" data-num="8"></button> </div>
+                        <div class="grid-cell"><button class="button" data-num="9"></button> </div>
+                        <div class="grid-cell"><button class="button" data-num="10"></button> </div>
+                        <div class="grid-cell"><button class="button" data-num="11"></button> </div>
+                    </div>
+                    <div class="grid-row">
+                        <div class="grid-cell"><button class="button" data-num="12"></button> </div>
+                        <div class="grid-cell"><button class="button" data-num="13"></button> </div>
+                        <div class="grid-cell"><button class="button" data-num="14"></button> </div>
+                        <div class="grid-cell"><button class="button" data-num="15"></button> </div>
+                    </div>
+                </div>
+                <button id="done-button" class="button-18">Done</button>
+                <div id="results"></div>
+            </div>
+        </div>
+
+
+        <!-- Word sequence game -->
+        <div class="game-viewport" id="word-memory">
+            <div class="game-title">
+                <h1>Word Sequence Memory</h1>
+                <div class="start-container">
+                    <button id="start-button" class="button-18">Start</button>
+                </div>
+            </div>
+            <div id="game-body" class="hidden">
+
+                <div id="game-container">
+                    <div id="word-container">
+                        <h2 id="word" class="word-display"></h2>
+                    </div>
+                    <div class="response-buttons">
+                        <button id="seen-button" class="button-18">Seen</button>
+                        <button id="new-button" class="button-18">New</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Digit sequence game   -->
+        <div class="game-viewport" id="digit-memory">
+            <div class="game-title">
+                <h1>Digit Sequence Memory</h1>
+                <div class="start-container">
+                    <button id="start-button" class="button-18">Start</button>
+                </div>
+            </div>
+
+            <div class="game-body">
+                <div class="digit-display"><h2 id="digits"></h2></div>
+                <div id="answer-block" class="hidden">
+                    <input type="text" id="response" placeholder="Enter the numbers">
+                    <button id="btnCheckAnswer" onclick="DigitGame.checkAnswer()" class="button-18">Check Answer</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Visual sequence game   -->
+        <div class="game-viewport" id="pattern-memory">
+            <div class="game-title">
+                <h1>Visual Pattern Memory</h1>
+                <div id="start-container" class="visible">
+                    <button id="start" class="button-18">Start</button>
+                </div>
+            </div>
+            <div id="game-body" class="hidden">
+                <div id="game-container">
+                    <button id="red" class="button red"></button>
+                    <button id="green" class="button green"></button>
+                    <button id="yellow" class="button yellow"></button>
+                    <button id="blue" class="button blue"></button>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+        <script src="grid-script.js"></script>
+        <script src="simon-script.js"></script>
+        <script src="digit-script.js"></script>
+        <script src="words-script.js"></script>
+        <script src="scoring.js"></script>
+        <script>
+         GridGame.recordScore = recordScore;
+         WordGame.recordScore = recordScore;
+         DigitGame.recordScore = recordScore;
+         SimonGame.recordScore = recordScore;
+
+         function hideAll() {
+             GridGame.hide();
+             WordGame.hide();
+             DigitGame.hide();
+             SimonGame.hide();
+         };
+
+
+         function hideBegin() {
+             document.getElementById("begin").classList.add("hidden");
+             document.getElementById("begin").classList.remove("visible");
+
+         };
+
+         function showBegin() {
+             document.getElementById("begin").classList.add("visible");
+             document.getElementById("begin").classList.remove("hidden");
+
+         };
+
+
+         const maxTrials = 3;
+
+         let trials = [];
+         function setupTrials(){
+
+             const genre_elem = document.getElementById('genre');
+             const genre = genre_elem.value;
+             console.log("value is ", genre);
+
+             const subject = document.getElementById('subject').value;
+
+
+             let curGame = undefined;
+             const games = [GridGame, WordGame, DigitGame, SimonGame];
+
+             for (trial=0; trial < maxTrials; trial++) {
+                 for (let gIdx in games) {
+                     let game = games[gIdx];
+                     trials.push([game,trial, genre, subject]);
+                 }
+             }
+             hideBegin();
+             nextTrial();
+         };
+
+         function nextTrial() {
+
+             if (trials.length > 0) {
+                 game = trials[0][0];
+                 trial = trials[0][1];
+                 genre = trials[0][2];
+                 subject = trials[0][3];
+
+                 t = trials.splice(0,1);
+
+                 game.recordScore = (name, score) => {
+
+                     const scoreData = {name: name, trial: trial, genre: genre, score: score, subject: subject};
+                     console.log(scoreData);
+
+                     localStorage.setItem(Date(), JSON.stringify(scoreData));
+
+                     game.hide()
+                     nextTrial();
+                 };
+
+
+                 hideAll();
+                 game.show();
+
+             } else {
+                 console.log('all done');
+                 showBegin();
+             }
+         }
+
+         function generateUUID() { // Public Domain/MIT
+             var d = new Date().getTime();//Timestamp
+             var d2 = ((typeof performance !== 'undefined') && performance.now && (performance.now()*1000)) || 0;//Time in microseconds since page-load or 0 if unsupported
+             return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                 var r = Math.random() * 16;//random number between 0 and 16
+                 if(d > 0){//Use timestamp until depleted
+                     r = (d + r)%16 | 0;
+                     d = Math.floor(d/16);
+                 } else {//Use microseconds since page-load if supported
+                     r = (d2 + r)%16 | 0;
+                     d2 = Math.floor(d2/16);
+                 }
+                 return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+             });
+         }
+
+
+         function downloadDatabase () {
+             const storageObj =   JSON.stringify(
+                 Object.keys(localStorage).reduce(
+                     (obj, k) => ({ ...obj, [k]: JSON.parse(localStorage.getItem(k)) }),
+                     {}
+                 ),
+                 null,
+                 2
+             );
+
+             var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(storageObj));
+             var dlAnchorElem = document.getElementById('downloadAnchorElem');
+             dlAnchorElem.setAttribute("href",     dataStr     );
+             dlAnchorElem.setAttribute("download", "music-experiment-database.json");
+             dlAnchorElem.click();
+
+         };
+
+
+         document.getElementById("start-test").addEventListener("click", setupTrials);
+         hideAll();
+
+
+
+
+        </script>
+    </body>
+</html>

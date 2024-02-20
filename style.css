@@ -1,0 +1,185 @@
+/* Basic grid layout */
+#grid-memory .grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#grid-memory .grid-row {
+    display: flex;
+}
+
+#grid-memory .grid-cell {
+    width: 100px;
+    height: 100px;
+    /* background-color: lightgray; */
+    border: 1px solid black;
+    cursor: pointer; /* Indicate interactivity */
+    overflow: hidden;
+}
+
+/* Black squares */
+#grid-memory .black {
+    background-color: black;
+}
+
+/* User feedback */
+#grid-memory .correct {
+    background-color: green;
+}
+
+#grid-memory .missing {
+    background-color: red;
+}
+
+#grid-memory .extra {
+    background-color: blue;
+}
+
+#grid-memory .button {
+    width: 75px;
+    height: 75px;
+    border: none;
+    /* background-color: #ccc; */
+    border-radius: 50%;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    opacity: 100%;
+}
+
+/* Simon */
+
+#pattern-memory .button {
+    width: 150px;
+    height: 150px;
+    border: none;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    opacity: 25%;
+}
+
+#pattern-memory .button.active {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a shadow when active */
+    opacity: 100%;
+}
+
+
+#pattern-memory .button.red {
+    /* background-image: url("images/red.png"); /\* Replace with your image path *\/ */
+    background-color: red;
+    background-size: cover;
+}
+
+#pattern-memory .button.green {
+    /* background-image: url("images/green.png"); /\* Replace with your image path *\/ */
+    background-color: green;
+    background-size: cover;
+}
+
+#pattern-memory .button.yellow {
+    /* background-image: url("images/yellow.png"); /\* Replace with your image path *\/ */
+    background-color: yellow;
+    background-size: cover;
+}
+
+#pattern-memory .button.blue {
+    /* background-image: url("images/blue.png"); /\* Replace with your image path *\/ */
+    background-color: blue;
+    background-size: cover;
+}
+
+#pattern-memory #score {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+#pattern-memory .hidden {
+    display: none;
+}
+
+#pattern-memory .visible {
+    display: block;
+}
+
+/* Words game */
+
+#word-memory .word-display {
+    justify-content: center;
+    display: flex;
+}
+#word-memory .response-buttons {
+    justify-content: center;
+    display: flex;
+}
+
+/* Digits game */
+#word-memory .word-display {
+    justify-content: center;
+    display: flex;
+}
+#word-memory .response-buttons {
+    justify-content: center;
+    display: flex;
+}
+
+/* Common */
+
+/* CSS */
+.button-18 {
+  align-items: center;
+  background-color: #0A66C2;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.button-18:hover,
+.button-18:focus {
+  background-color: #16437E;
+  color: #ffffff;
+}
+
+.button-18:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, .7);
+}
+
+.button-18:disabled {
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, .08);
+  color: rgba(0, 0, 0, .3);
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
